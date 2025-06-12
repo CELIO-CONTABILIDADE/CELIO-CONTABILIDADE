@@ -2,16 +2,16 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WS Organização Contábil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CELIO CONTABILIDADE</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>WS Organização Contábil</h1>
+    <h1>CELIO CONTABILIDADE</h1>
     <nav>
       <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
+      <a href="#departamentos">Departamentos</a>
       <a href="#contato">Contato</a>
     </nav>
   </header>
@@ -19,27 +19,88 @@
   <main>
     <section id="sobre">
       <h2>Sobre Nós</h2>
-      <p>Somos especialistas em soluções contábeis para pessoas físicas e jurídicas. Atuamos com excelência desde 2008.</p>
+      <p>Somos especialistas em soluções contábeis para pessoas físicas e jurídicas. Atuamos com excelência desde 2012.</p>
+      <p>Temos setor de processos responsável por abertura, alteração de empresas, MEI, licenças como Iagro, Sanitária, CRMV, Alvará e auxiliamos em BVO.</p>
+      <p>Possuímos uma Certificadora própria no ramo de certificados digitais, além de setores fiscal, contábil e departamento pessoal.</p>
     </section>
 
-    <section id="servicos">
-      <h2>Serviços</h2>
-      <ul>
-        <li>Contabilidade para empresas</li>
-        <li>Imposto de Renda</li>
-        <li>Folha de pagamento</li>
-        <li>Abertura e encerramento de empresas</li>
-      </ul>
+    <section id="pesquisa">
+      <h2>Pesquisa sobre o Célio</h2>
+      <input type="text" id="searchInput" placeholder="Digite algo sobre o Célio..." />
+      <div id="searchResults"></div>
+    </section>
+
+    <section id="departamentos">
+      <h2>Departamentos</h2>
+      <div class="card">
+        <h3>Setor de Processos</h3>
+        <p>Responsável por abertura, alteração de empresas, MEI, licenças como Iagro, Sanitária, CRMV, Alvará e auxílio em BVO.</p>
+      </div>
+      <div class="card">
+        <h3>Certificadora Digital</h3>
+        <p>Certificadora própria no ramo de certificados digitais.</p>
+      </div>
+      <div class="card">
+        <h3>Setor Fiscal</h3>
+        <p>Gerenciamento e controle fiscal da empresa.</p>
+      </div>
+      <div class="card">
+        <h3>Departamento Contábil</h3>
+        <p>Serviços contábeis para pessoas físicas e jurídicas.</p>
+      </div>
+      <div class="card">
+        <h3>Departamento Pessoal</h3>
+        <p>Gestão de folha de pagamento e recursos humanos.</p>
+      </div>
     </section>
 
     <section id="contato">
       <h2>Contato</h2>
-      <p>📞 (67) 99999-9999<br>✉️ contato@wscontabil.com.br</p>
+      <p>📍 Rua Pimenta Bueno, 267 - Amambai</p>
+      <p>📞 (67) 3026-4339</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 WS Organização Contábil</p>
+    <p>&copy; 2025 CELIO CONTABILIDADE</p>
   </footer>
+
+  <script>
+    // Script simples para pesquisar no texto sobre o Célio
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    const celioInfo = [
+      "Célio é o contador da empresa",
+      "Especialista em soluções contábeis",
+      "Atua com excelência desde 2012",
+      "Responsável por setor de processos, abertura e alteração de empresas",
+      "Auxilia com licenças como Iagro, Sanitária, CRMV, Alvará",
+      "Possui certificadora própria no ramo de certificados digitais",
+      "Cuida do setor fiscal, contábil e departamento pessoal"
+    ];
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      searchResults.innerHTML = '';
+
+      if(query.length === 0) return;
+
+      const filtered = celioInfo.filter(item => item.toLowerCase().includes(query));
+
+      if(filtered.length === 0){
+        searchResults.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+        return;
+      }
+
+      const list = document.createElement('ul');
+      filtered.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+      searchResults.appendChild(list);
+    });
+  </script>
 </body>
 </html>
